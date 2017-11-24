@@ -22,10 +22,16 @@
   left:100px;
   top:100px;
   /* border-width: 10px; */
-  /* box-sizing: border-box; */
+  /* box-sizing: border-box;  */
 }
 
-.AirspeedIndicator{
+.AirspeedIndicator {
   line-height: 2em;
   font-size: 1.3em;
+}
+.AirspeedIndicator .SpeedMark {
+  position: absolute;
+  color: white;
+  z-index: 0;
+  right: 0px;
 }

@@ -4,8 +4,11 @@ import horizon from './horizon.svg';
 import './Pfd.css';
 import Rx from 'rxjs/Rx';
 
+const pad3 = (int) => {
+  return ("000" + (int)).slice(-3)
+}
 
-const AirspeedIndicator = (props) => {
+const AirspeedIndicator = (p) => {
 
   const speedStyle = {
     position: "absolute",
@@ -24,86 +27,40 @@ const AirspeedIndicator = (props) => {
     margin: "0px",
     // display: "inline-block",
   }
-  
-  const markStyle = {
-    position: "relative",
-    zIndex: 10,
-    color: "white",
-    float: "right",
-    bottom: `${props.airspeed}%`,
-    // bottom: "461px",
-    
-    // top: "461px",
-    // left: "84px",
+
+  let speedMarks = [];
+  let offset = 140;
+  let dispAirspeed = Math.max(p.airspeed, 30)
+  for (let i = -10; i < 11; i++) {
+    let oneKtInPx = 3.808;
+    let speedMark = Math.floor(dispAirspeed / 10) * 10 - i * 10;
+    if (speedMark >= 30) {
+
+      const markStyle = {
+        bottom: `${offset + oneKtInPx * (speedMark - dispAirspeed)}px`,
+      }
+      speedMarks.push(<div className="SpeedMark" style={markStyle}>{!(speedMark / 10 % 2) ? pad3(speedMark) : ""}  -</div>);
+    }
   }
-  
+
+
   return <div className="AirspeedIndicator" style={speedStyle}>
-    <div style={markStyle}>330 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>320 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>310 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>300 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>290 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>280 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>270 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>260 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>250 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>240 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>130 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>220 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>210 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>200 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>190 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>180 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>170 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>160 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>150 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>140 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>130 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>120 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>110 -</div><br/>
-    <div style={markStyle}>-</div><br/>
-    <div style={markStyle}>100 -</div><br/>
+    {speedMarks}
   </div>
 }
 
 class Pfd extends Component {
-  
+
   constructor(props) {
-    super();
+    super(props);
     this.update = this.update.bind(this);
-    this.state = {airspeed: 0}
-    let airspeed = 0;
-    Rx.Observable.interval(15)
-    .timeInterval()
-    // .take(100)
-    .subscribe(t => {
-      airspeed++;
-      this.update({airspeed: airspeed/10 % 70});
+    this.state = { airspeed: 0 }
+    // let airspeed = 0;
+    props.flightDataObs.subscribe(data => {
+      this.update(data);
     })
   }
-  
+
   render() {
 
     const backgroundStyle = {
@@ -125,8 +82,8 @@ class Pfd extends Component {
   }
 
   update(data) {
-    console.log(this.state)
-    this.setState({airspeed: data.airspeed});
+    // console.log(this.state)
+    this.setState({ airspeed: data.airspeed });
   }
 
 }

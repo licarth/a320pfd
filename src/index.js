@@ -3,9 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Pfd from './Pfd';
 import Rx from 'rxjs/Rx';
+import _ from 'lodash';
 import registerServiceWorker from './registerServiceWorker';
 
-const pfd = <Pfd airspeed="90"/>;
+
+let airspeed = 100;
+
+const flightDataObs = Rx.Observable.interval(30)
+    .timeInterval()
+    .map(() => {
+        // airspeed -= _.random(-0.2, 0.2, true);
+        airspeed -= 0.2;
+        // airspeed = 0;
+        return {
+            airspeed
+        };
+    })
+    .takeWhile(({airspeed}) => airspeed > 0)
+
+const pfd = <Pfd flightDataObs={flightDataObs} />;
 ReactDOM.render(pfd, document.getElementById('root'));
 registerServiceWorker();
 

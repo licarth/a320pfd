@@ -7,5 +7,5 @@ body {
 
 @font-face{
   font-family: "A320PFD";
-  src: url("/a320pfd.woff") format("woff");
+  src: url("./a320pfd.woff") format("woff");
 }
