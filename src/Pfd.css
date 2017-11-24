@@ -1,0 +1,31 @@
+/* .horizon {
+  animation: Move-Horizon infinite 10s linear;
+  height: 80px;
+} 
+*/
+
+/* @keyframes Move-Horizon {
+  0% { transform: rotate(0deg) }
+  25% { transform: rotate(10deg) }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+} */
+
+.Pfd {
+  position:relative;
+  width: 631.18px;
+  height: 604.72px;
+  border: solid;
+  border-color: white;
+  /* float: right; */
+  left:100px;
+  top:100px;
+  /* border-width: 10px; */
+  /* box-sizing: border-box; */
+}
+
+.AirspeedIndicator{
+  line-height: 2em;
+  font-size: 1.3em;
+}
