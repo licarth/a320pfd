@@ -13,6 +13,7 @@
 } */
 
 .Pfd {
+  color: white;
   position:relative;
   width: 631.18px;
   height: 604.72px;
@@ -25,13 +26,63 @@
   /* box-sizing: border-box;  */
 }
 
-.AirspeedIndicator {
-  line-height: 2em;
-  font-size: 1.3em;
+svg.baseline {
+  font-size: 30px;
+  width: 10px;
 }
-.AirspeedIndicator .SpeedMark {
+
+svg.baseline line {
+  stroke: rgb(255, 255, 255);
+  stroke-width: 0.06;
+}
+
+.Pfd > span {
+  position: absolute;
+}
+
+.Pfd .labelGrid .green {
+  color: #34c957;
+}
+
+.Pfd .labelGrid .label {
+  font-size: 1.2em;
+  /* padding: 10px; */
+  height: 1em;
+  /* font-weight: bold; */
+  text-align: center;
+}
+
+.Pfd .labelGrid {
+  position: absolute;
+  width: 600px;
+  top: 10px;
+  left: 30px;
+  height: 80px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 112px 126px 140px 115px 100px;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 0px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.Pfd > div {
+  position: absolute;
+}
+
+.AirspeedIndicator {
+  font-size: 10px;
+}
+.AirspeedIndicator .SpeedLabel {
   position: absolute;
   color: white;
   z-index: 0;
   right: 0px;
+}
+
+.AirspeedIndicator .SpeedNumber {
+  position: relative;
+  margin-right: 8px;
+  font-size: 22px;
+  top:5px;
 }

@@ -7,14 +7,14 @@ import _ from 'lodash';
 import registerServiceWorker from './registerServiceWorker';
 
 
-let airspeed = 100;
+let airspeed = 311;
 
 const flightDataObs = Rx.Observable.interval(30)
     .timeInterval()
     .map(() => {
         // airspeed -= _.random(-0.2, 0.2, true);
         airspeed -= 0.2;
-        // airspeed = 0;
+        // airspeed = 311;
         return {
             airspeed
         };

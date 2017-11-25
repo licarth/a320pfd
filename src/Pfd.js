@@ -8,28 +8,32 @@ const pad3 = (int) => {
   return ("000" + (int)).slice(-3)
 }
 
+const LabelGrid = (p) => {
+  return <div className="labelGrid">
+    <span style={{gridColumn:"1"}} className="label green">THR CLB</span>
+    <span style={{gridColumn:"2"}} className="label green">CLB</span>
+    <span style={{gridColumn:"5", gridLine:"1"}} className="label">AA2</span>
+    <span style={{gridColumn:"5", gridLine:"2"}} className="label">1 FF 2</span>
+    <span style={{gridColumn:"5", gridLine:"3"}} className="label">A/THR</span>
+  </div>
+}
+
 const AirspeedIndicator = (p) => {
 
   const speedStyle = {
     position: "absolute",
     zIndex: 10,
     color: "white",
-    // top: "143px",
-    // bottom: "461px",
-    boxSizing: "border-box",
     top: "152.4px",
     left: "25.5px",
     height: "319.8px",
     width: "65.5px",
-    // border: "solid",
-    // borderColor: "green",
     overflow: "hidden",
     margin: "0px",
-    // display: "inline-block",
   }
 
   let speedMarks = [];
-  let offset = 140;
+  let offset = 153;
   let dispAirspeed = Math.max(p.airspeed, 30)
   for (let i = -10; i < 11; i++) {
     let oneKtInPx = 3.808;
@@ -39,10 +43,18 @@ const AirspeedIndicator = (p) => {
       const markStyle = {
         bottom: `${offset + oneKtInPx * (speedMark - dispAirspeed)}px`,
       }
-      speedMarks.push(<div className="SpeedMark" style={markStyle}>{!(speedMark / 10 % 2) ? pad3(speedMark) : ""}  -</div>);
+      speedMarks.push(
+        <div className="SpeedLabel" style={markStyle}>
+          <span className="SpeedNumber">{!(speedMark / 10 % 2) ? pad3(speedMark) : ""}</span>
+          <span>
+            <svg width="1em" height="1em" viewBox="0 0 1 1" preserveAspectRatio="none" class="baseline">
+              <line x1="0" y1="0.97" x2="1" y2="0.97" />
+            </svg>
+          </span>
+        </div>
+      );
     }
   }
-
 
   return <div className="AirspeedIndicator" style={speedStyle}>
     {speedMarks}
@@ -65,15 +77,16 @@ class Pfd extends Component {
 
     const backgroundStyle = {
       position: "absolute",
-      zIndex: 10
+      zIndex: -1
     }
     const horizonStyle = {
       position: "absolute",
-      zIndex: 1,
+      zIndex: -10,
       top: "Opx",
     }
     return (
       <div className="Pfd">
+        <LabelGrid />
         <img src={back} className="background" style={backgroundStyle} />
         <AirspeedIndicator airspeed={this.state.airspeed} />
         <img src={horizon} className="horizon" style={horizonStyle} />
