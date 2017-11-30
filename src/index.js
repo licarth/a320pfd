@@ -7,7 +7,8 @@ import _ from 'lodash';
 import registerServiceWorker from './registerServiceWorker';
 
 
-let airspeed = 80;
+let airspeed = 160;
+let overspeed = 170;
 
 
 // Play data progressively
@@ -62,8 +63,10 @@ const flightDataObs1 = Rx.Observable
     .timeInterval()
     .flatMap((interval) => {        
         airspeed-=0.1;
+        overspeed +=0.1;
         return Rx.Observable.of({
             airspeed,
+            overspeed,
             clb: true
         });
     })
