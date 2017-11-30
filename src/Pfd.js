@@ -7,11 +7,11 @@ import Horizon from './Horizon';
 
 const LabelGrid = (p) => {
   return <div className="labelGrid">
-    <span style={{gridColumn:"1"}} className="label green">THR CLB</span>
-    <span style={{gridColumn:"2"}} className="label green">CLB</span>
-    <span style={{gridColumn:"5", gridLine:"1"}} className="label">AA2</span>
-    <span style={{gridColumn:"5", gridLine:"2"}} className="label">1 FF 2</span>
-    <span style={{gridColumn:"5", gridLine:"3"}} className="label">A/THR</span>
+    <span style={{ gridColumn: "1" }} className="label green">THR CLB</span>
+    <span style={{ gridColumn: "2" }} className="label green">CLB</span>
+    <span style={{ gridColumn: "5", gridLine: "1" }} className="label">AA2</span>
+    <span style={{ gridColumn: "5", gridLine: "2" }} className="label">1 FF 2</span>
+    <span style={{ gridColumn: "5", gridLine: "3" }} className="label">A/THR</span>
   </div>
 }
 
@@ -19,11 +19,11 @@ class Pfd extends Component {
   constructor(props) {
     super(props);
     this.update = this.update.bind(this);
-    this.state = { 
+    this.state = {
       airspeed: 0,
       altitude: 0,
-     }
-    
+    }
+
     props.flightDataObs.subscribe(data => {
       this.update(data);
     })
@@ -37,9 +37,9 @@ class Pfd extends Component {
     return (
       <div className="Pfd">
         <LabelGrid />
-        <img src={back} className="background" style={backgroundStyle} alt=""/>
+        <img src={back} className="background" style={backgroundStyle} alt="" />
         <Horizon />
-        <AirspeedIndicator airspeed={this.state.airspeed} />
+        <AirspeedIndicator airspeed={this.state.airspeed} overspeed={this.state.overspeed} />
         <Altimeter altitude={this.state.altitude} />
       </div>
     );
@@ -47,7 +47,10 @@ class Pfd extends Component {
 
   update(data) {
     // console.log(this.state)
-    this.setState({ airspeed: data.airspeed });
+    this.setState({
+      airspeed: data.airspeed,
+      overspeed: data.overspeed
+    });
   }
 
 }

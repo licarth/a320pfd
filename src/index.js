@@ -7,11 +7,12 @@ import _ from 'lodash';
 import registerServiceWorker from './registerServiceWorker';
 
 
-let airspeed = 311;
+let airspeed = 160;
+let overspeed = 170;
 
 
 // Play data progressively
-const period = 15; //milliseconds
+const period = 3; //milliseconds
 
 const corsProxy = "https://cors-anywhere.herokuapp.com/";
 const flightDataObs1 = Rx.Observable
@@ -58,12 +59,14 @@ const flightDataObs1 = Rx.Observable
             .takeWhile(({ airspeed }) => airspeed > -10000)
     })
 
-    const flightDataObs2 = Rx.Observable.interval(3)
+    const flightDataObs2 = Rx.Observable.interval(15)
     .timeInterval()
     .flatMap((interval) => {        
         airspeed-=0.1;
+        overspeed +=0.1;
         return Rx.Observable.of({
             airspeed,
+            overspeed,
             clb: true
         });
     })

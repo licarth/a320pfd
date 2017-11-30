@@ -26,15 +26,6 @@
   /* box-sizing: border-box;  */
 }
 
-svg.baseline {
-  font-size: 30px;
-  width: 10px;
-}
-
-svg.baseline line {
-  stroke: rgb(255, 255, 255);
-  stroke-width: 0.06;
-}
 
 .Pfd > span {
   position: absolute;
@@ -72,25 +63,110 @@ svg.baseline line {
 
 .AirspeedIndicator {
   font-size: 10px;
-  position: "absolute";
+  position: absolute;
   top: 152.4px;
-  left: 25.5px;
   height: 319.8px;
-  width: 65.5px;
+  width: 85px;
+  left: 25.5px;
+  
+}
+.AirspeedIndicator .SpeedContainer {
+  position: relative;
+  height: 100%;
+  width: 68px;
   overflow: hidden;
+  display: inline-block;
+}
+
+.AirspeedIndicator .RightMarks {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  width: 17px;
+  display: inline-block;
+}
+
+.AirspeedIndicator .SpeedLabel {
+  position: absolute;
+  /* float: right; */
+  right: 0px;
+  color: white;
+  z-index: 0;
+}
+
+.AirspeedIndicator .SpeedLabel .SpeedNumber {
+  position: relative;
+  right: 12px;
+  top: 12px;
+
 }
 .AirspeedIndicator .SpeedLabel {
   position: absolute;
+  /* float: right; */
+  right: 0px;
   color: white;
   z-index: 0;
+}
+
+svg.VerticalLine {
+  position: absolute;
   right: 0px;
+  height:3000px;
+  bottom: 113px;
+}
+svg.VerticalLine line {
+  stroke: rgb(255, 255, 255);
+  stroke-width: 1;
+}
+
+svg.Overspeed {
+  position: absolute;
+  height:1000px;
+  bottom: 113px;
+  width: 10px;
+}
+svg.Overspeed line {
+  stroke: rgb(255, 0, 0);
+  stroke-width: 1;
+}
+
+svg.baseline {
+  position: absolute;
+  bottom: -1.2px;
+  right: 0px;
+}
+svg.baseline line {
+  stroke: rgb(255, 255, 255);
+  stroke-width: 1;
+}
+
+svg.SpeedBottomLine {
+  position: absolute;
+  bottom: -1px;
+  /* right: -19px; */
+  left: -2px;
+  width: 87px;
+}
+svg.SpeedBottomLine line {
+  z-index: 200;
+  stroke: rgb(255, 255, 255);
+  stroke-width: 1;
 }
 
 .AirspeedIndicator .SpeedNumber {
   position: relative;
   margin-right: 8px;
   font-size: 22px;
-  top:5px;
+  top: 5px;
+}
+
+.AirspeedIndicator .ZeroSpeed {
+  position: relative;
+  border-right: 10px;
+  /* top: 0px; */
+  /* margin-right: 8px; */
+  /* font-size: 22px; */
+  /* top:5px; */
 }
 
 .Altimeter {
@@ -100,7 +176,7 @@ svg.baseline line {
   left: 465px;
   height: 325px;
   width: 85px;
-  overflow: hidden;
+  /* overflow: hidden; */
   box-sizing: border-box; 
   border: dotted;
 }
@@ -112,7 +188,7 @@ svg.baseline line {
   /* left: 465px; */
   /* height: 325px; */
   /* width: 85px; */
-  /* overflow: hidden; */
+  overflow: hidden;
   /* box-sizing: border-box;  */
   /* border: dotted; */
 }
