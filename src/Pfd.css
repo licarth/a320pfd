@@ -72,6 +72,12 @@ svg.baseline line {
 
 .AirspeedIndicator {
   font-size: 10px;
+  position: "absolute";
+  top: 152.4px;
+  left: 25.5px;
+  height: 319.8px;
+  width: 65.5px;
+  overflow: hidden;
 }
 .AirspeedIndicator .SpeedLabel {
   position: absolute;
@@ -85,4 +91,28 @@ svg.baseline line {
   margin-right: 8px;
   font-size: 22px;
   top:5px;
+}
+
+.Altimeter {
+  font-size: 10px;
+  position: "absolute";
+  top: 151px;
+  left: 465px;
+  height: 325px;
+  width: 85px;
+  overflow: hidden;
+  box-sizing: border-box; 
+  border: dotted;
+}
+
+.Horizon {
+  font-size: 10px;
+  position: "absolute";
+  /* top: 151px; */
+  /* left: 465px; */
+  /* height: 325px; */
+  /* width: 85px; */
+  /* overflow: hidden; */
+  /* box-sizing: border-box;  */
+  /* border: dotted; */
 }
