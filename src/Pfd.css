@@ -81,7 +81,7 @@
 .AirspeedIndicator .SpeedLabel .SpeedNumber {
   position: relative;
   right: 10px;
-  top: 10px;
+  top: 12px;
 
 }
 .AirspeedIndicator .SpeedLabel {
