@@ -26,15 +26,6 @@
   /* box-sizing: border-box;  */
 }
 
-svg.baseline {
-  font-size: 30px;
-  width: 10px;
-}
-
-svg.baseline line {
-  stroke: rgb(255, 255, 255);
-  stroke-width: 0.06;
-}
 
 .Pfd > span {
   position: absolute;
@@ -72,7 +63,7 @@ svg.baseline line {
 
 .AirspeedIndicator {
   font-size: 10px;
-  position: "absolute";
+  position: absolute;
   top: 152.4px;
   left: 25.5px;
   height: 319.8px;
@@ -81,16 +72,52 @@ svg.baseline line {
 }
 .AirspeedIndicator .SpeedLabel {
   position: absolute;
+  /* float: right; */
+  right: 0px;
   color: white;
   z-index: 0;
+}
+
+.AirspeedIndicator .SpeedLabel .SpeedNumber {
+  position: relative;
+  right: 10px;
+  top: 10px;
+
+}
+.AirspeedIndicator .SpeedLabel {
+  position: absolute;
+  /* float: right; */
+  right: 0px;
+  color: white;
+  z-index: 0;
+}
+
+
+svg.baseline {
+  position: absolute;
+  bottom: -1.5px;
   right: 0px;
 }
+svg.baseline line {
+  stroke: rgb(255, 255, 255);
+  stroke-width: 1;
+}
+
 
 .AirspeedIndicator .SpeedNumber {
   position: relative;
   margin-right: 8px;
   font-size: 22px;
-  top:5px;
+  top: 5px;
+}
+
+.AirspeedIndicator .ZeroSpeed {
+  position: relative;
+  border-right: 10px;
+  /* top: 0px; */
+  /* margin-right: 8px; */
+  /* font-size: 22px; */
+  /* top:5px; */
 }
 
 .Altimeter {
