@@ -1,4 +1,5 @@
 import React from 'react';
+import SpeedTriangle from './speed-triangle.svg'
 
 const pad3 = (int) => {
   return ("000" + (int)).slice(-3)
@@ -34,7 +35,7 @@ const AirspeedIndicator = (p) => {
   }
 
   const overspeedStyle = {};
-  if (p.overspeed){
+  if (p.overspeed && p.overspeed < dispAirspeed + 41) {
     overspeedStyle.bottom = `${oneKtInPx * (p.overspeed - dispAirspeed) - offset}px`
   } else {
     overspeedStyle.bottom = "1000px"
@@ -43,6 +44,19 @@ const AirspeedIndicator = (p) => {
   const belowLineStyle = {}
   if (dispAirspeed < 72) {
     belowLineStyle.display = "none";
+  }
+
+  const apTriangle = {
+    position: "absolute",
+    bottom: `${oneKtInPx * (p.ap.targetSpeed - dispAirspeed) - offset - 17}px`,
+    left: "-5px",
+  }
+
+  let apAirspeedDigitsStyle = {};
+  if (p.ap.targetSpeed < dispAirspeed - 41) {
+    delete apAirspeedDigitsStyle.hidden;
+  } else {
+    apAirspeedDigitsStyle.display = "none";
   }
 
   return <div className="AirspeedIndicator">
@@ -55,13 +69,17 @@ const AirspeedIndicator = (p) => {
       </div>
     </div>
     <div className="RightMarks">
-      <svg style={overspeedStyle} className="Overspeed" viewBox="0 0 1 1000" preserveAspectRatio="none">
-        <line stroke-dasharray="9, 9" x1="0.5" y1="0" x2="0.5" y2="1000" />
+      <svg style={overspeedStyle} className="Overspeed" viewBox="0 0 10 1000" preserveAspectRatio="none">
+        <line strokeDasharray="9, 9" x1="5" y1="0" x2="5" y2="1000" />
       </svg>
+      <div style={apTriangle}>
+        <img src={SpeedTriangle} className="speedTriangle" alt="speedTriangle" />
+      </div>
     </div>
     <svg style={belowLineStyle} className="SpeedBottomLine" width="10px" height="1px" viewBox="0 0 1 1" preserveAspectRatio="none">
       <line x1="0" y1="0.5" x2="1" y2="0.5" />
     </svg>
+    <div className="ApAirspeedDigitsBottom" style={apAirspeedDigitsStyle}>{Math.floor(p.ap.targetSpeed)}</div>
   </div>
 }
 

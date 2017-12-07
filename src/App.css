@@ -1,0 +1,28 @@
+.Panel {
+    display: grid;
+    grid-template-columns: 650px 300px;    
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0;
+    margin: 0;    
+}
+
+/* .row { */
+    /* width: auto; */
+/* } */
+
+.input {
+    width: 100%;
+    /* display:  */
+}
+
+.left {
+    /* justify-content: center; */
+}
+
+.right {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* justify-content: center; */
+}

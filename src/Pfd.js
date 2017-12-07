@@ -4,6 +4,7 @@ import './Pfd.css';
 import AirspeedIndicator from './Airspeed';
 import Altimeter from './Altimeter';
 import Horizon from './Horizon';
+import _ from 'lodash';
 
 const LabelGrid = (p) => {
   return <div className="labelGrid">
@@ -22,9 +23,20 @@ class Pfd extends Component {
     this.state = {
       airspeed: 0,
       altitude: 0,
+      ap: {
+        targetSpeed: undefined,
+      }
     }
+    this.state.dataSubscription = props.flightDataObs.subscribe(data => {
+      this.update(data);
+    })
+  }
 
-    props.flightDataObs.subscribe(data => {
+  componentWillReceiveProps(nextprops) {
+    if (this.state.dataSubscription) {
+      this.state.dataSubscription.unsubscribe();
+    };
+    this.state.dataSubscription = nextprops.flightDataObs.subscribe(data => {
       this.update(data);
     })
   }
@@ -39,18 +51,14 @@ class Pfd extends Component {
         <LabelGrid />
         <img src={back} className="background" style={backgroundStyle} alt="" />
         <Horizon />
-        <AirspeedIndicator airspeed={this.state.airspeed} overspeed={this.state.overspeed} />
-        <Altimeter altitude={this.state.altitude} />
+        <AirspeedIndicator {...this.state} />
+        <Altimeter {...this.state} />
       </div>
     );
   }
 
   update(data) {
-    // console.log(this.state)
-    this.setState({
-      airspeed: data.airspeed,
-      overspeed: data.overspeed
-    });
+    this.setState(_.merge(this.state, data));
   }
 
 }

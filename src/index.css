@@ -3,6 +3,12 @@ body {
   padding: 0;
   font-family: "A320PFD";
   background-color: black;
+  color: white;
+  height: 100%;
+}
+
+#root{
+  height: 100%;
 }
 
 @font-face{

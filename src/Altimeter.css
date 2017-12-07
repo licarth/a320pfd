@@ -1,0 +1,65 @@
+.Altimeter {
+  font-size: 10px;
+  position: "absolute";
+  top: 151px;
+  left: 465px;
+  height: 325px;
+  width: 85px;
+  /* font-family: monospace */
+  /* overflow: hidden; */
+  /* box-sizing: border-box;  */
+  /* border: dotted; */
+  /* font-weight: bold */
+}
+
+.bigDigit{
+  position: absolute; 
+}
+
+.BigDigitsContainer {
+  color: #3ae061;
+  border-bottom: solid 2px yellow;
+  border-top: solid 2px yellow;
+  box-sizing: border-box; 
+  background: black;
+  font-size: 2.7em;
+  position: absolute;
+  top:146px;
+  height: 33px;
+  width: 52px;
+  z-index: 11;
+  overflow: hidden;
+}
+
+.SmallDigitsContainer {
+  /* background: black; */
+  border: solid 2px yellow;
+  color: #3ae061;
+  font-size: 2.0em;
+  position: absolute;
+  top:135px;
+  height: 53px;
+  left: 50px;
+  width: 35px;
+  z-index: 10;
+  overflow: hidden;
+  box-sizing: border-box;
+  text-align: center;
+    /* border:dotted; */
+}
+
+.FirstDigit {
+  /* left: 0.1em; */
+  top: -10.6em;
+  /* top: -11.7em; */
+}
+
+.SecondDigit {
+  left: 0.6em;
+  top: -8.4em;
+}
+
+.ThirdDigit {
+  left: 1.2em;
+  top: -5.3em;
+}

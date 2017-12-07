@@ -20,8 +20,8 @@
   border: solid;
   border-color: white;
   /* float: right; */
-  left:100px;
-  top:100px;
+  /* left:100px; */
+  /* top:100px; */
   /* border-width: 10px; */
   /* box-sizing: border-box;  */
 }
@@ -66,7 +66,7 @@
   position: absolute;
   top: 152.4px;
   height: 319.8px;
-  width: 85px;
+  width: 100px;
   left: 25.5px;
   
 }
@@ -82,7 +82,7 @@
   position: relative;
   height: 100%;
   overflow: hidden;
-  width: 17px;
+  width: 32px;
   display: inline-block;
 }
 
@@ -122,12 +122,11 @@ svg.VerticalLine line {
 svg.Overspeed {
   position: absolute;
   height:1000px;
-  bottom: 113px;
   width: 10px;
 }
 svg.Overspeed line {
   stroke: rgb(255, 0, 0);
-  stroke-width: 1;
+  stroke-width: 10;
 }
 
 svg.baseline {
@@ -163,22 +162,6 @@ svg.SpeedBottomLine line {
 .AirspeedIndicator .ZeroSpeed {
   position: relative;
   border-right: 10px;
-  /* top: 0px; */
-  /* margin-right: 8px; */
-  /* font-size: 22px; */
-  /* top:5px; */
-}
-
-.Altimeter {
-  font-size: 10px;
-  position: "absolute";
-  top: 151px;
-  left: 465px;
-  height: 325px;
-  width: 85px;
-  /* overflow: hidden; */
-  box-sizing: border-box; 
-  border: dotted;
 }
 
 .Horizon {
@@ -191,4 +174,12 @@ svg.SpeedBottomLine line {
   overflow: hidden;
   /* box-sizing: border-box;  */
   /* border: dotted; */
+}
+
+.ApAirspeedDigitsBottom {
+  position: relative;
+  color: #eb9ce2;
+  font-size: 2em;
+  right: 15px;
+  text-align: right;
 }
