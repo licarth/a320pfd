@@ -36,7 +36,7 @@ const L = (p) => {
 const Horizon = (p) => {
 
   const horizonStyle = {
-    transform: `rotate(${p.roll}deg) translateY(${p.pitch * oneDegreeInPixels}px)`,
+    transform: `rotate(${p.roll}deg) translateY(${p.pitch* oneDegreeInPixels}px)`,
     // transform: `translateY(${24}px)`,
   }
 

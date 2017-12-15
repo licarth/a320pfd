@@ -45,8 +45,8 @@ export default () => Rx.Observable.interval(interval)
     .map(timeInterval => {
         data.airspeed = Math.max(0, speed * 1.94384);
         data.altitude = altitude * 3.28084
-        data.pitch = beta;
+        data.pitch = beta-90;
         data.yaw = alpha;
-        data.roll = gamma;
+        data.roll = -gamma;
         return data;
     })
