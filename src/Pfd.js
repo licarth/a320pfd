@@ -22,6 +22,9 @@ class Pfd extends Component {
     this.state = {
       airspeed: 250,
       altitude: 4000,
+      pitch: 3,
+      roll: 0,
+      yaw: 0,
       ap: {
         targetSpeed: undefined,
       }
@@ -50,7 +53,7 @@ class Pfd extends Component {
       <div className="Pfd">
         <LabelGrid />
         <img src={back} className="background" style={backgroundStyle} alt="" />
-        <Horizon {...this.state.pitchYawRoll}/>
+        <Horizon {...this.state}/>
         <AirspeedIndicator {...this.state} />
         <Altimeter {...this.state} />
       </div>

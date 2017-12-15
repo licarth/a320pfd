@@ -10,6 +10,7 @@ const data = {
     airspeed: 250,
     altitude: 4000,
     overspeed: 200,
+    pitch: 10,
     ap: {
         targetSpeed: 140,
     }

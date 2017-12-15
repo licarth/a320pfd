@@ -2,6 +2,18 @@ import Rx from 'rxjs/Rx';
 import _ from 'lodash';
 import { timeInterval } from 'rxjs/operator/timeInterval';
 
+let absolute;
+let alpha; //z axis / lacet / yaw
+let beta; // x axis / tangage / pitch
+let gamma; // y axis / roulis / roll
+
+const handleOrientation = (event) => {
+    console.log(event)
+    alpha = event.alpha
+    beta = event.beta
+    gamma = event.gamma
+}
+
 window.addEventListener("deviceorientation", handleOrientation, true);
 
 const data = {
@@ -16,21 +28,11 @@ const data = {
 const fps = 30;
 const interval = 1000 / fps;
 
-let absolute;
-let alpha;
-let beta;
-let gamma;
 
 let latitude;
 let longitude;
 let altitude;
 let speed;
-
-const handleOrientation = (event) => {
-    event.alpha
-    event.beta
-    event.gamma
-}
 
 const watchId = navigator.geolocation.watchPosition((position) => {
     latitude = position.coords.latitude;
@@ -43,6 +45,8 @@ export default () => Rx.Observable.interval(interval)
     .map(timeInterval => {
         data.airspeed = Math.max(0, speed * 1.94384);
         data.altitude = altitude * 3.28084
-        // console.log(data.altitude)
+        data.pitch = beta;
+        data.yaw = alpha;
+        data.roll = gamma;
         return data;
     })
