@@ -3,27 +3,50 @@ import _ from 'lodash';
 import './Altimeter.css';
 
 const digits = _.map(
-  [9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+  [1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
   i => <div>{i}</div>
 );
 
 const twoLast = _.map(
-  ["80", "00", "20", "40", "60", "80", "00", "20"],
+  ["20", "00", "80", "60", "40", "20", "00", "80"],
   i => <div>{i}</div>
 );
 
-const Altimeter = (p) => {
 
+const BigDigit = (p) => {
+  const digitStyle = {
+    top: `${p.value}em`
+  }
+  return <div className="Digit" style={digitStyle}>{digits}</div>;
+}
+
+const Altimeter = (p) => {
+  
+  let firstDigitValue = Math.floor(p.altitude / 10000) ;
+  let secondDigitValue = Math.floor((p.altitude - firstDigitValue*10000)/ 1000);
+  let thirdDigitValue = Math.floor((p.altitude - firstDigitValue*10000 - secondDigitValue*1000)/ 100);
+  let twoLastValue = p.altitude % 100;
+  let offset;
+
+  if (p.altitude % 100 > 80){
+    offset = p.altitude % 20 / 20
+    thirdDigitValue+=offset;
+    if (p.altitude % 1000 > 980){
+      secondDigitValue+=offset;
+    }
+    if (p.altitude % 10000 > 9980){
+      firstDigitValue+=offset;
+    }
+  }
+  
   return <div className="Altimeter">
     <div className="BigDigitsContainer">
-      {/* <div className="BigDigits"> */}
-      {/* <div className="FirstDigit bigDigit">{digits}</div> */}
-      <div className="SecondDigit bigDigit">{digits}</div>
-      <div className="ThirdDigit bigDigit">{digits}</div>
-      {/* </div> */}
+      <BigDigit value={firstDigitValue} />
+      <BigDigit value={secondDigitValue} />
+      <BigDigit value={thirdDigitValue} />
     </div>
     <div className="SmallDigitsContainer">
-      <div className="TwoLast smallDigit">{twoLast}</div>
+      <div className="TwoLast Digit" style={{top: `${twoLastValue/20}em`}}>{twoLast}</div>
     </div>
   </div>
 }

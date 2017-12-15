@@ -5,15 +5,7 @@
   left: 465px;
   height: 325px;
   width: 85px;
-  /* font-family: monospace */
-  /* overflow: hidden; */
-  /* box-sizing: border-box;  */
-  /* border: dotted; */
-  /* font-weight: bold */
-}
-
-.bigDigit{
-  position: absolute; 
+  overflow: hidden;
 }
 
 .BigDigitsContainer {
@@ -32,7 +24,6 @@
 }
 
 .SmallDigitsContainer {
-  /* background: black; */
   border: solid 2px yellow;
   color: #3ae061;
   font-size: 2.0em;
@@ -45,21 +36,25 @@
   overflow: hidden;
   box-sizing: border-box;
   text-align: center;
-    /* border:dotted; */
 }
 
-.FirstDigit {
-  /* left: 0.1em; */
-  top: -10.6em;
-  /* top: -11.7em; */
+.Digit{
+  position: absolute;
+  margin-top: -10.95em;
+  line-height: 1em;
 }
 
-.SecondDigit {
+.Digit:nth-child(2) {
   left: 0.6em;
-  top: -8.4em;
 }
 
-.ThirdDigit {
-  left: 1.2em;
-  top: -5.3em;
+.Digit:nth-child(3) {
+  left: 1.3em;
+}
+
+.TwoLast {
+  margin-top: -5.25em;
+  margin-left: 0.15em;
+  line-height: 1em;
+  top: 3.8em;
 }
