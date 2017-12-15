@@ -3,7 +3,7 @@
     grid-template-columns: 650px 300px;    
     grid-gap: 10px;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     height: 100%;
     padding: 0;
     margin: 0;    

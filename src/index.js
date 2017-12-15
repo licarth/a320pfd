@@ -4,7 +4,6 @@ import './index.css';
 import Pfd from './Pfd';
 import Rx from 'rxjs/Rx';
 import _ from 'lodash';
-import gamepadObs from './Gamepad';
 import registerServiceWorker from './registerServiceWorker';
 import InputSelector from './InputSelector';
 import App from './App';

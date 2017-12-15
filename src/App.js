@@ -4,8 +4,9 @@ import './index.css';
 import Pfd from './Pfd';
 import Rx from 'rxjs/Rx';
 import _ from 'lodash';
-import gamepadObs from './Gamepad';
-import keyboardObs from './Keyboard';
+import gamepadObs from './inputs/Gamepad';
+import keyboardObs from './inputs/Keyboard';
+import gyroscopeObs from './inputs/Gyroscope';
 import registerServiceWorker from './registerServiceWorker';
 import InputSelector from './InputSelector';
 import './App.css';
@@ -14,13 +15,12 @@ import { Observable } from 'rxjs/Observable';
 let airspeed = 160;
 let overspeed = 170;
 
-
 export default class App extends React.Component {
     constructor(props) {
         super(props)
         const joystickConnected = navigator.getGamepads()[0] !== null;
         this.state = {
-            inputMode: joystickConnected ? 'joystick' : 'keyboard',
+            inputMode: joystickConnected ? 'joystick' : 'gyroscope',
             disabledInputs: joystickConnected ? [] : ['joystick']
         }
         window.addEventListener("gamepadconnected",
@@ -52,6 +52,9 @@ export default class App extends React.Component {
                 break;
             case 'keyboard':
                 flightDataObs = keyboardObs();
+                break;
+            case 'gyroscope':
+                flightDataObs = gyroscopeObs();
                 break;
             default:
                 flightDataObs = Observable.of({ airspeed: 250 })

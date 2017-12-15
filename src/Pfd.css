@@ -19,6 +19,7 @@
   height: 604.72px;
   border: solid;
   border-color: white;
+  overflow: hidden;
   /* float: right; */
   /* left:100px; */
   /* top:100px; */

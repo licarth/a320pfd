@@ -1,0 +1,30 @@
+.horizon {
+    position: absolute;
+    z-index: -10;
+}
+
+.movingHorizon {
+    top: 313px;
+    left: 281px;
+    transform-origin: top left;
+    /* transform: rotate(0deg); */
+    /* transform: translateY(0px); */
+}
+.horizon .centered {
+    top: 313px;
+    left: 281px;
+}
+
+.horizon .shadow {
+    filter: drop-shadow(0px 0px 1px black);
+}
+
+.horizon div {
+    position: absolute;
+}
+.horizon img {
+    position: absolute;
+}
+.horizon svg {
+    position: absolute;
+}
