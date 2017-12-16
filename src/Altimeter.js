@@ -41,7 +41,7 @@ const Altimeter = (p) => {
   }
 
   return <div className="Altimeter">
-    <AltitudeRoll {...p}/>
+    {/* <AltitudeRoll {...p}/> */}
     <div className="BigDigitsContainer">
       <BigDigit value={firstDigitValue} />
       <BigDigit value={secondDigitValue} />
