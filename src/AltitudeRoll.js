@@ -1,10 +1,11 @@
 import React from 'react';
 import SpeedTriangle from './speed-triangle.svg'
-import './Airspeed.css'
+import './AltitudeRoll.css'
 
 const pad3 = (int) => {
   return ("000" + (int)).slice(-3)
 }
+// let oneKtInPx = 3.808;
 let oneKtInPx = 3.808;
 
 let speedMarks = [];

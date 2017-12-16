@@ -27,26 +27,26 @@ export default () => Rx.Observable
         const targetVars = [];
 
         const assignments = {
-            "s": {p: "airspeed", inc:1},
-            "t": {p: "ap.targetSpeed", inc:1},
-            "o": {p: "overspeed", inc:1},
-            "a": {p: "altitude", inc: 7},
+            "s": { p: "airspeed", inc: 1 },
+            "t": { p: "ap.targetSpeed", inc: 1 },
+            "o": { p: "overspeed", inc: 1 },
+            "a": { p: "altitude", inc: 7 },
         }
 
         for (let k of Object.keys(assignments)) {
             if (isPressed[k]) {
-                targetVars.push({p: assignments[k].p, inc:assignments[k].inc});
+                targetVars.push({ p: assignments[k].p, inc: assignments[k].inc });
             }
         }
 
         switch (e.key) {
             case "ArrowDown":
-                _.map(targetVars, ({p, inc}) =>
+                _.map(targetVars, ({ p, inc }) =>
                     _.set(data, p, _.get(data, p) - inc)
                 );
                 break;
-                case "ArrowUp":
-                _.map(targetVars, ({p, inc}) =>
+            case "ArrowUp":
+                _.map(targetVars, ({ p, inc }) =>
                     _.set(data, p, _.get(data, p) + inc)
                 );
                 break;

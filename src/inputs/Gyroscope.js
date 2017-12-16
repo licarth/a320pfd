@@ -3,15 +3,15 @@ import _ from 'lodash';
 import { timeInterval } from 'rxjs/operator/timeInterval';
 
 let absolute;
-let alpha; //z axis / lacet / yaw
-let beta; // x axis / tangage / pitch
-let gamma; // y axis / roulis / roll
+let z; //z axis / lacet / yaw / alpha
+let x; // x axis / tangage / pitch / beta
+let y; // y axis / roulis / roll
 
 const handleOrientation = (event) => {
     console.log(event)
-    alpha = event.alpha
-    beta = event.beta
-    gamma = event.gamma
+    z = event.alpha
+    x = event.beta
+    y = event.gamma
 }
 
 window.addEventListener("deviceorientation", handleOrientation, true);
@@ -45,8 +45,8 @@ export default () => Rx.Observable.interval(interval)
     .map(timeInterval => {
         data.airspeed = Math.max(0, speed * 1.94384);
         data.altitude = altitude * 3.28084
-        data.pitch = beta-90;
-        data.yaw = alpha;
-        data.roll = -gamma;
+        data.pitch = y;
+        data.yaw = x;
+        data.roll = -z;
         return data;
     })
