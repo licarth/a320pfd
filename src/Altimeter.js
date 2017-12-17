@@ -41,14 +41,16 @@ const Altimeter = (p) => {
   }
 
   return <div className="Altimeter">
-    {/* <AltitudeRoll {...p}/> */}
-    <div className="BigDigitsContainer">
-      <BigDigit value={firstDigitValue} />
-      <BigDigit value={secondDigitValue} />
-      <BigDigit value={thirdDigitValue} />
-    </div>
-    <div className="SmallDigitsContainer">
-      <div className="TwoLast Digit" style={{ top: `${twoLastValue / 20}em` }}>{twoLast}</div>
+    <div class="DigitsContainer">
+      <AltitudeRoll {...p} />
+      <div className="BigDigitsContainer">
+        <BigDigit value={firstDigitValue} />
+        <BigDigit value={secondDigitValue} />
+        <BigDigit value={thirdDigitValue} />
+      </div>
+      <div className="SmallDigitsContainer">
+        <div className="TwoLast Digit" style={{ top: `${twoLastValue / 20}em` }}>{twoLast}</div>
+      </div>
     </div>
   </div>
 }

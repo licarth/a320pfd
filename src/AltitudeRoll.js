@@ -5,62 +5,41 @@ import './AltitudeRoll.css'
 const pad3 = (int) => {
   return ("000" + (int)).slice(-3)
 }
-// let oneKtInPx = 3.808;
-let oneKtInPx = 3.808;
+let oneLfInPx = 28.5;
 
 let speedMarks = [];
-for (let i = 3; i < 100; i++) {
-  let speedMark = i * 10;
+for (let i = 0; i < 600; i++) {
+  let flMark = i;
 
   const markStyle = {
-    bottom: `${oneKtInPx * speedMark}px`,
+    bottom: `${oneLfInPx * flMark}px`,
   }
 
   speedMarks.push(
-    <div key={speedMark} className="SpeedLabel" style={markStyle}>
-      <span className="SpeedNumber">{!(speedMark / 10 % 2) ? pad3(speedMark) : ""}</span>
-      <svg width="10px" height="1.5px" viewBox="0 0 1 1" preserveAspectRatio="none" className="baseline">
+    <div key={flMark} className="SpeedLabel" style={markStyle}>
+      <span className="SpeedNumber">{!(flMark % 5) ? ">"+pad3(flMark) : ""}</span>
+      <svg width="9px" height="1.5px" viewBox="0 0 1 1" preserveAspectRatio="none" className="baseline">
         <line x1="0" y1="0.5" x2="1" y2="0.5" />
       </svg>
     </div>
   );
 }
 
-const AirspeedIndicator = (p) => {
+const AltitudeRoll = (p) => {
 
-  let dispAirspeed = Math.max(p.airspeed, 30)
+  let dispFL = p.altitude / 100
 
-  let offset = -160;
+  let offset = -163;
   const rulerStyle = {
-    bottom: `${offset - oneKtInPx * dispAirspeed}px`,
-  }
-
-  const overspeedStyle = {};
-  if (p.overspeed && p.overspeed < dispAirspeed + 41) {
-    overspeedStyle.bottom = `${oneKtInPx * (p.overspeed - dispAirspeed) - offset}px`
-  } else {
-    overspeedStyle.bottom = "1000px"
+    bottom: `${offset - oneLfInPx * dispFL}px`,
   }
 
   const belowLineStyle = {}
-  if (dispAirspeed < 72) {
+  if (dispFL < 72) {
     belowLineStyle.display = "none";
   }
 
-  const apTriangle = {
-    position: "absolute",
-    bottom: `${oneKtInPx * (p.ap.targetSpeed - dispAirspeed) - offset - 17}px`,
-    left: "-5px",
-  }
-
-  let apAirspeedDigitsStyle = {};
-  if (p.ap.targetSpeed < dispAirspeed - 41) {
-    delete apAirspeedDigitsStyle.hidden;
-  } else {
-    apAirspeedDigitsStyle.display = "none";
-  }
-
-  return <div className="AirspeedIndicator">
+  return <div className="AltitudeRoll">
     <div className="SpeedContainer">
       <div className="ZeroSpeed" style={rulerStyle}>
         <svg className="VerticalLine" width="1px" height="10px" viewBox="0 0 1 1" preserveAspectRatio="none">
@@ -69,19 +48,10 @@ const AirspeedIndicator = (p) => {
         {speedMarks}
       </div>
     </div>
-    <div className="RightMarks">
-      <svg style={overspeedStyle} className="Overspeed" viewBox="0 0 10 1000" preserveAspectRatio="none">
-        <line strokeDasharray="9, 9" x1="5" y1="0" x2="5" y2="1000" />
-      </svg>
-      <div style={apTriangle}>
-        <img src={SpeedTriangle} className="speedTriangle" alt="speedTriangle" />
-      </div>
-    </div>
     <svg style={belowLineStyle} className="SpeedBottomLine" width="10px" height="1px" viewBox="0 0 1 1" preserveAspectRatio="none">
       <line x1="0" y1="0.5" x2="1" y2="0.5" />
     </svg>
-    <div className="ApAirspeedDigitsBottom" style={apAirspeedDigitsStyle}>{Math.floor(p.ap.targetSpeed)}</div>
   </div>
 }
 
-export default AirspeedIndicator;
+export default AltitudeRoll;

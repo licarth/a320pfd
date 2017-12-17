@@ -73,3 +73,8 @@
   /* box-sizing: border-box;  */
   /* border: dotted; */
 }
+
+.Calque {
+  opacity: 0.5;
+  z-index: 100;
+}

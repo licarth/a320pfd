@@ -1,29 +1,22 @@
 .AltitudeRoll {
   font-size: 10px;
   position: absolute;
-  top: 152.4px;
-  height: 319.8px;
-  width: 100px;
-  left: 425.5px;
-  
+  /* top: 152.4px; */
+  height: 325px;
+  /* width: 100px; */
+  /* left: 25px; */
+  /* border: solid; */
+  /* border-color: yellow; */
 }
-.AirspeedIndicator .SpeedContainer {
+
+.AltitudeRoll .SpeedContainer {
   position: relative;
   height: 100%;
-  width: 68px;
-  overflow: hidden;
+  width: 52px;
   display: inline-block;
 }
 
-.AirspeedIndicator .RightMarks {
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-  width: 32px;
-  display: inline-block;
-}
-
-.AirspeedIndicator .SpeedLabel {
+.AltitudeRoll .SpeedLabel {
   position: absolute;
   /* float: right; */
   right: 0px;
@@ -31,18 +24,10 @@
   z-index: 0;
 }
 
-.AirspeedIndicator .SpeedLabel .SpeedNumber {
+.AltitudeRoll .SpeedLabel .SpeedNumber {
   position: relative;
-  right: 12px;
-  top: 12px;
-
-}
-.AirspeedIndicator .SpeedLabel {
-  position: absolute;
-  /* float: right; */
-  right: 0px;
-  color: white;
-  z-index: 0;
+  right: 13px;
+  top: 13px;
 }
 
 svg.VerticalLine {
@@ -51,6 +36,7 @@ svg.VerticalLine {
   height:3000px;
   bottom: 113px;
 }
+
 svg.VerticalLine line {
   stroke: rgb(255, 255, 255);
   stroke-width: 1;
@@ -61,6 +47,7 @@ svg.Overspeed {
   height:1000px;
   width: 10px;
 }
+
 svg.Overspeed line {
   stroke: rgb(255, 0, 0);
   stroke-width: 10;
@@ -71,6 +58,7 @@ svg.baseline {
   bottom: -1.2px;
   right: 0px;
 }
+
 svg.baseline line {
   stroke: rgb(255, 255, 255);
   stroke-width: 1;
@@ -83,20 +71,21 @@ svg.SpeedBottomLine {
   left: -2px;
   width: 87px;
 }
+
 svg.SpeedBottomLine line {
   z-index: 200;
   stroke: rgb(255, 255, 255);
   stroke-width: 1;
 }
 
-.AirspeedIndicator .SpeedNumber {
+.AltitudeRoll .SpeedNumber {
   position: relative;
-  margin-right: 8px;
+  margin-right: -4px;
   font-size: 22px;
   top: 5px;
 }
 
-.AirspeedIndicator .ZeroSpeed {
+.AltitudeRoll .ZeroSpeed {
   position: relative;
   border-right: 10px;
 }

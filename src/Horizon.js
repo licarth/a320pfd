@@ -1,7 +1,5 @@
 import React from 'react';
-import calque from './calque.svg';
 import './Horizon.css';
-
 
 const style = {
   fill: "none",
@@ -76,9 +74,6 @@ const Horizon = (p) => {
         <L h={-20} />
       </svg>
     </div>
-    {/* <img src={calque} 
-    style={{ opacity: 0.5 }}
-     /> */}
     <svg className="centered"
       overflow="visible"
     >

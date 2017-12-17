@@ -2,19 +2,24 @@
   font-size: 10px;
   position: "absolute";
   top: 151px;
-  left: 465px;
+  left: 440px;
   height: 325px;
-  width: 85px;
+  width: 110px;
   overflow: hidden;
 }
 
+.DigitsContainer {
+  position: absolute;
+  left: 25px;
+}
+
 .BigDigitsContainer {
+  font-size: 28px;
   color: #3ae061;
   border-bottom: solid 2px yellow;
   border-top: solid 2px yellow;
   box-sizing: border-box; 
   background: black;
-  font-size: 2.7em;
   position: absolute;
   top:146px;
   height: 33px;
@@ -24,9 +29,9 @@
 }
 
 .SmallDigitsContainer {
+  font-size: 17px;
   border: solid 2px yellow;
   color: #3ae061;
-  font-size: 2.0em;
   position: absolute;
   top:135px;
   height: 53px;
@@ -53,8 +58,8 @@
 }
 
 .TwoLast {
-  margin-top: -5.25em;
-  margin-left: 0.15em;
+  margin-top: -4.85em;
+  margin-left: 5px;
   line-height: 1em;
   top: 3.8em;
 }

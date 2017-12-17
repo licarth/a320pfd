@@ -5,6 +5,7 @@ import AirspeedIndicator from './Airspeed';
 import Altimeter from './Altimeter';
 import Horizon from './Horizon';
 import _ from 'lodash';
+import calque from './calque.svg';
 
 const LabelGrid = (p) => {
   return <div className="labelGrid">
@@ -20,13 +21,13 @@ class Pfd extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      airspeed: 250,
-      altitude: 4000,
-      pitch: 3,
+      airspeed: 310.5,
+      altitude: 21020,
+      pitch: 4.1,
       roll: 0,
       yaw: 0,
       ap: {
-        targetSpeed: undefined,
+        targetSpeed: 311.5,
       }
     }
     this.dataSubscription = props.flightDataObs.subscribe(data => {
@@ -43,7 +44,7 @@ class Pfd extends Component {
     })
   }
 
-  
+
   render() {
     const backgroundStyle = {
       position: "absolute",
@@ -53,9 +54,10 @@ class Pfd extends Component {
       <div className="Pfd">
         <LabelGrid />
         <img src={back} className="background" style={backgroundStyle} alt="" />
-        <Horizon {...this.state}/>
+        <Horizon {...this.state} />
         <AirspeedIndicator {...this.state} />
         <Altimeter {...this.state} />
+        {/* <img className="Calque" src={calque} /> */}
       </div>
     );
   }

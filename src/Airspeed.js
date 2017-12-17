@@ -18,7 +18,7 @@ for (let i = 3; i < 100; i++) {
   speedMarks.push(
     <div key={speedMark} className="SpeedLabel" style={markStyle}>
       <span className="SpeedNumber">{!(speedMark / 10 % 2) ? pad3(speedMark) : ""}</span>
-      <svg width="10px" height="1.5px" viewBox="0 0 1 1" preserveAspectRatio="none" className="baseline">
+      <svg width="14px" height="1.5px" viewBox="0 0 1 1" preserveAspectRatio="none" className="baseline">
         <line x1="0" y1="0.5" x2="1" y2="0.5" />
       </svg>
     </div>

@@ -20,7 +20,7 @@ export default class App extends React.Component {
         super(props)
         const joystickConnected = navigator.getGamepads()[0] !== null;
         this.state = {
-            inputMode: joystickConnected ? 'joystick' : 'gyroscope',
+            inputMode: joystickConnected ? 'joystick' : 'keyboard',
             disabledInputs: joystickConnected ? [] : ['joystick']
         }
         window.addEventListener("gamepadconnected",
