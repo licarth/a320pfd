@@ -30,9 +30,6 @@ class Joystick {
         if (this.curr) {
             this.prev = cloneGamepad(this.curr);
         } 
-        // else {
-            // this.prev = g;
-        // }
         const g = navigator.getGamepads()[0];
         this.curr = g;
         this.buttons = g.buttons;
@@ -53,18 +50,21 @@ class Joystick {
     }
     
 }
+const fps = 30;
+const interval = 1000 / fps;
 
 const data = {
     airspeed: 250,
-    alt: 0,
     overspeed: 200,
+    altitude: 0,
+    pitch: 0,
+    roll: 0,
     ap: {
         targetSpeed: 140,
-    }
+    },
+    interval,
 };
 
-const fps = 30;
-const interval = 1000 / fps;
 
 const j = new Joystick();
 
@@ -74,6 +74,8 @@ export default () => Rx.Observable.interval(interval)
     if (j.connected()) {
         j.refresh();
         data.airspeed = Math.max(0, data.airspeed - Math.pow(j.axes[2], 3) * interval);
+        data.pitch = data.pitch + Math.pow(j.axes[1], 3) * interval/10;
+        data.roll = data.roll + Math.pow(j.axes[0], 3) * interval/10;
         data.overspeed = 150 + (j.axes[4] + 1) * 50;
         if (j.buttonReleased(8)) {
                 data.ap.targetSpeed++;

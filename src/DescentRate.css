@@ -1,0 +1,24 @@
+.DescentRate {
+  font-size: 10px;
+  position: "absolute";
+  top: 121px;
+  left: 576px;
+  height: 385px;
+  width: 48px;
+  /* overflow: hidden; */
+  /* border: solid; */
+  /* box-sizing: border-box;  */
+}
+
+.DescentRate svg{
+  position: absolute;
+  /* top: 6px; */
+  /* left: 11px; */
+  /* stroke: red; */
+  overflow: visible;
+  top: 192px;
+  /* fill: red; */
+  /* stroke: red; */
+  /* opacity: .5; */
+  /* z-index: 200; */
+}

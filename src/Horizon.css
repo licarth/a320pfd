@@ -28,3 +28,7 @@
 .horizon svg {
     position: absolute;
 }
+
+.flippedText svg text {
+    transform: scale(-1, 1)
+}

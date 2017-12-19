@@ -3,6 +3,7 @@ import back from './back.svg';
 import './Pfd.css';
 import AirspeedIndicator from './Airspeed';
 import Altimeter from './Altimeter';
+import DescentRate from './DescentRate';
 import Horizon from './Horizon';
 import _ from 'lodash';
 import calque from './calque.svg';
@@ -23,14 +24,24 @@ class Pfd extends Component {
     this.state = {
       airspeed: 310.5,
       altitude: 21020,
-      pitch: 4.1,
+      pitch: 0,
       roll: 0,
       yaw: 0,
       ap: {
         targetSpeed: 311.5,
-      }
+      },
+      fd: {
+        pitch: 4.1,
+        yaw: 0,
+      },
     }
     this.dataSubscription = props.flightDataObs.subscribe(data => {
+      // if (data) {
+        data.pitch = data.pitch % 360
+        data.verticalRateFeet = Math.sin(data.pitch * Math.PI / 180) * data.airspeed * 1.68781 // Feet per second
+        data.verticalRateMeters = Math.sin(data.pitch * Math.PI / 180) * data.airspeed * 0.514444 // meters per second
+        data.altitude += data.interval / 1000 * data.verticalRateFeet;
+      // }
       this.setState(data);
     })
   }
@@ -50,6 +61,9 @@ class Pfd extends Component {
       position: "absolute",
       zIndex: -1
     }
+
+
+
     return (
       <div className="Pfd">
         <LabelGrid />
@@ -58,6 +72,11 @@ class Pfd extends Component {
         <AirspeedIndicator {...this.state} />
         <Altimeter {...this.state} />
         {/* <img className="Calque" src={calque} /> */}
+        {/* pitch: {this.state.pitch} */}
+        {/* roll: {this.state.roll} */}
+        <DescentRate {...this.state} />
+        {/* altitude: {this.state.altitude} */}
+        {/* verticalRate: {this.state.verticalRateMeters} */}
       </div>
     );
   }
